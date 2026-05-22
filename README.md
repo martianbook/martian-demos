@@ -103,12 +103,50 @@ uv run martian multimodule/run.py --inspect
 uv run martian serve
 ```
 
+### `vision_martian/main.py`
+
+A full modular computer vision + neural network pipeline spanning
+multiple files and execution stages.
+
+Generates a synthetic geometric shape dataset, applies classical
+computer vision (Sobel edge detection), trains a CNN, and visualizes
+what the network learned using saliency maps, learned filters, and
+forward-hook activation maps.
+
+Shows that MartianBook can scale beyond small scripts into a realistic
+multi-module ML workflow with artifact-heavy reports.
+
+**Requires:** `torch`, `torchvision`, `numpy`, `matplotlib`,
+`scikit-learn`, `scipy`, `Pillow`
+
+```bash
+uv run martian vision_martian/main.py
+uv run martian serve
+```
+
+Expected output:
+
+- sample dataset grid
+- class distribution chart
+- Sobel edge comparisons
+- mean edge maps
+- RGB histograms
+- training curves
+- confusion matrix
+- learned convolution filters
+- gradient saliency maps
+- activation heatmaps
+
+**10 embedded artifact plots total**
+
+
 ---
 
 ## What each demo tests
 
-| Demo | Decorators | Cross-file | Artifacts | Skip |
-|---|---|---|---|---|
-| `basic/pipeline.py` | ✓ | ✗ | ✗ | ✓ |
-| `plotting/charts.py` | ✓ | ✗ | ✓ PNG | ✓ |
-| `multimodule/run.py` | ✓ | ✓ 3 modules | ✓ PNG | ✓ |
+| Demo | Decorators | Cross-file | Artifacts | Scale |
+|---|---:|---:|---:|---:|
+| `basic/pipeline.py` | ✓ | ✗ | ✗ | minimal |
+| `plotting/charts.py` | ✓ | ✗ | ✓ PNG | small |
+| `multimodule/run.py` | ✓ | ✓ 3 modules | ✓ PNG | medium |
+| `vision_martian/main.py` | ✓ | ✓ 5 modules | ✓ 10 plots | large ML |
