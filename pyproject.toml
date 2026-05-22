@@ -1,11 +1,17 @@
 [project]
 name = "martian-test"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "martianbook>=0.1.0",
-    "matplotlib>=3.10.9",
-    "numpy>=2.4.5",
+    "martianbook",
+    "torch>=2.2.0",
+    "torchvision>=0.17.0",
+    "matplotlib>=3.8.0",
+    "numpy>=1.26.0",
+    "Pillow>=10.0.0",
+    "scikit-learn>=1.4.0",
+    "scipy>=1.12.0",
 ]
+
+[tool.uv.sources]
+martianbook = { path = "../martianbook", editable = true }
